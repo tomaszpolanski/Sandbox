@@ -1,0 +1,15 @@
+﻿using Microsoft.Practices.Prism.StoreApps;
+
+namespace Sandbox.Views
+{
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
+    public sealed partial class ReactivePropertiesPage : VisualStateAwarePage
+    {
+        public ReactivePropertiesPage()
+        {
+            InitializeComponent();
+        }
+    }
+}

@@ -1,0 +1,13 @@
+/Sandbox.Tests/*.ncrunchproject
+/packages
+/Sandbox.UILogic/bin
+/Sandbox.UILogic/obj
+/Sandbox.Tests/obj
+/Sandbox.Tests/bin
+/*.user
+/*.ncrunchsolution
+/Sandbox/Sandbox.Windows/obj
+/Sandbox/Sandbox.Windows/bin
+/Sandbox/Sandbox.WindowsPhone/obj
+/Sandbox/Sandbox.WindowsPhone/bin
+/_NCrunch_Sandbox/*.cache
