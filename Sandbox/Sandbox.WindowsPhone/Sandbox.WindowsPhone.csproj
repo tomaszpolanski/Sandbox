@@ -96,9 +96,6 @@
     <Content Include="Assets\WideLogo.scale-240.png" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="HERE.Common">
-      <HintPath>..\..\packages\HERE.Common.1.0.0.7\lib\portable-net45+win+wpa81+wp80\HERE.Common.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Practices.Prism.Mvvm">
       <HintPath>..\..\packages\Prism.Mvvm.1.1.1\lib\wpa81\Microsoft.Practices.Prism.Mvvm.dll</HintPath>
     </Reference>
