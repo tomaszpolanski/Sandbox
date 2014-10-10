@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reactive.Linq;
 using Microsoft.Practices.Prism.Mvvm;
-using Sandbox.UILogic.Reactive;
+using Utilities.Reactive;
 
 namespace Sandbox.UILogic.ViewModels
 {

@@ -5,7 +5,7 @@ using System.Windows.Input;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Mvvm;
 using Sandbox.UILogic.Model;
-using Sandbox.UILogic.Reactive;
+using Utilities.Reactive;
 
 namespace Sandbox.UILogic.ViewModels
 {

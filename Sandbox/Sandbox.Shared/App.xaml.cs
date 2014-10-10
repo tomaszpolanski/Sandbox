@@ -52,8 +52,6 @@ namespace Sandbox
 
         protected override object Resolve(Type type)
         {
-            // Use the container to resolve types (e.g. ViewModels and Flyouts)
-            // so their dependencies get injected
             return _container.Resolve(type);
         }
 

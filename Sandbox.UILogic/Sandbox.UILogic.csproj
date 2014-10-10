@@ -37,14 +37,6 @@
     <Compile Include="Model\Place.cs" />
     <Compile Include="Model\ReactivePlace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reactive\ObservableCommand.cs" />
-    <Compile Include="Reactive\RactivePropertyExtensions.cs" />
-    <Compile Include="Reactive\ReactiveExtensions.cs" />
-    <Compile Include="Reactive\ReactiveProperty.cs" />
-    <Compile Include="Reactive\ReactivePropertyBase.cs" />
-    <Compile Include="Reactive\ReadonlyReactiveProperty.cs" />
-    <Compile Include="Reactive\UIDispatcherScheduler.cs" />
-    <Compile Include="Reactive\Unsubscriber.cs" />
     <Compile Include="ViewModels\LatestWinsPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\PropertyUpdatePageViewModel.cs" />
@@ -81,12 +73,18 @@
       <HintPath>..\packages\Rx-PlatformServices.2.2.5\lib\portable-win81+wpa81\System.Reactive.PlatformServices.dll</HintPath>
     </Reference>
   </ItemGroup>
-    <ItemGroup>
+  <ItemGroup>
     <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />
     <TargetPlatform Include="Windows, Version=8.1" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Utilities\Utilities.Reactive\Utilities.Reactive.csproj">
+      <Project>{5C6B624F-191D-40A7-AE78-7FB74F72400C}</Project>
+      <Name>Utilities.Reactive</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
