@@ -26,9 +26,10 @@
         </StackPanel>
         <StackPanel Style="{StaticResource RootStackPanelStyle}"
                     Grid.Row="1">
-            <TextBlock Text="" 
+            <TextBlock Text="{Binding Text.Value}" 
                        Style="{StaticResource SubheaderTextBlockStyle}"/>
-            <Button Content="Button"/>
+            <Button Content="Button"
+                    Command="{Binding ClickCommand}"/>
         </StackPanel>
 
     </Grid>
