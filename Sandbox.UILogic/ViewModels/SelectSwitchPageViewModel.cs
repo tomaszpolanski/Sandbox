@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
@@ -23,7 +22,7 @@ namespace Sandbox.UILogic.ViewModels
 
             ItemSelectedCommand = new ReactiveCommand<IList<object>>();
             Population = ItemSelectedCommand.Select(selectedItems => selectedItems.FirstOrDefault())
-                                            .Select(selectedItem => selectedItem as City)
+                                            .OfType<City>()
                                             .Select(city => Observable.FromEventPattern<uint>(h => city.PopulationChanged += h,
                                                                                               h => city.PopulationChanged -= h)
                                                                       .Select(args => args.EventArgs)
@@ -35,6 +34,7 @@ namespace Sandbox.UILogic.ViewModels
 
         public void Dispose()
         {
+            ItemSelectedCommand.Dispose();
             Population.Dispose();
         }
     }
