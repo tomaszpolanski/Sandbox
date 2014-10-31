@@ -1,0 +1,60 @@
+﻿<storeApps:VisualStateAwarePage
+    x:Class="Sandbox.Views.SelectSwitchPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:storeApps="using:Microsoft.Practices.Prism.StoreApps"
+    xmlns:mvvm="using:Microsoft.Practices.Prism.Mvvm"
+    xmlns:commands="using:Sandbox.Commands"
+    mvvm:ViewModelLocator.AutoWireViewModel="true"
+    x:Name="pageRoot"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal"
+                    Margin="0,80,0,0">
+            <Button Style="{StaticResource BackButtonStyle}"
+                    Margin="60,0,20,0"
+                    Command="{Binding GoBackCommand, ElementName=pageRoot}"/>
+            <TextBlock Text="Select Switch"
+                       Style="{StaticResource SandboxTitleStyleTextStyle}" />
+
+        </StackPanel>
+        <Grid Style="{StaticResource RootPanelStyle}"
+                    HorizontalAlignment="Left"
+                    Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="{Binding Population.Value}"
+                       Width="300"
+                       FontSize="30"/>
+            <GridView ItemsSource="{Binding CitiesList}" 
+                      commands:SelectionCommand.Command="{Binding ItemSelectedCommand}"
+                      Grid.Column="1">
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Slider x:Name="PopulationSlider"
+                                Width="400"
+                                Header="{Binding ElementName=PopulationSlider, Path=Value}"
+                                Minimum="0"
+                                Maximum="200000"
+                                Value="{Binding Population, Mode=TwoWay}">
+
+                            </Slider>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+        </Grid>
+
+
+    </Grid>
+</storeApps:VisualStateAwarePage>

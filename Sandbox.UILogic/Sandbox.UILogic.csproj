@@ -36,6 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Model\City.cs" />
     <Compile Include="Model\Place.cs" />
     <Compile Include="Model\ReactivePlace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -44,6 +45,7 @@
     <Compile Include="ViewModels\PropertyUpdatePageViewModel.cs" />
     <Compile Include="ViewModels\ReactivePropertiesPageViewModel.cs" />
     <Compile Include="ViewModels\SandBoxPageViewModel.cs" />
+    <Compile Include="ViewModels\SelectSwitchPageViewModel.cs" />
     <Compile Include="ViewModels\SubscriptionChangePageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

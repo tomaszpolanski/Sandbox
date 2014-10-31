@@ -24,7 +24,7 @@
                        Style="{StaticResource SandboxTitleStyleTextStyle}" />
 
         </StackPanel>
-        <StackPanel Style="{StaticResource RootStackPanelStyle}"
+        <StackPanel Style="{StaticResource RootPanelStyle}"
                     Grid.Row="1">
             <TextBlock Text="{Binding Text.Value}" 
                        Style="{StaticResource SubheaderTextBlockStyle}"/>

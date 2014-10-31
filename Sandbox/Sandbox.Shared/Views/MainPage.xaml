@@ -24,7 +24,7 @@
                        Style="{StaticResource SandboxTitleStyleTextStyle}" />
 
         </StackPanel>
-        <StackPanel Style="{StaticResource RootStackPanelStyle}"
+        <StackPanel Style="{StaticResource RootPanelStyle}"
                     Width="300"
                     HorizontalAlignment="Left"
                     Grid.Row="1">
@@ -39,6 +39,9 @@
                     HorizontalAlignment="Stretch"/>
             <Button Content="Latest wins"
                     Command="{Binding LatestWinsCommand}"
+                    HorizontalAlignment="Stretch"/>
+            <Button Content="Select Switch"
+                    Command="{Binding SelectSwitchCommand}"
                     HorizontalAlignment="Stretch"/>
             <Button Content="Sandbox"
                     Command="{Binding SandboxCommand}"

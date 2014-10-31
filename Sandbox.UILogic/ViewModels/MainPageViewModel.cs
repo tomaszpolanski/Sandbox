@@ -12,6 +12,7 @@ namespace Sandbox.UILogic.ViewModels
         public ICommand SandboxCommand { get; private set; }
         public ICommand PropertyUpdateCommand { get; private set; }
         public ICommand LatestWinsCommand { get; private set; }
+        public ICommand SelectSwitchCommand { get; private set; }
 
 
         public MainPageViewModel(INavigationService navigationService)
@@ -22,6 +23,7 @@ namespace Sandbox.UILogic.ViewModels
             SandboxCommand = new DelegateCommand(() => navigationService.Navigate("SandBox", null));
             PropertyUpdateCommand = new DelegateCommand(() => navigationService.Navigate("PropertyUpdate", null));
             LatestWinsCommand = new DelegateCommand(() => navigationService.Navigate("LatestWins", null));
+            SelectSwitchCommand = new DelegateCommand(() => navigationService.Navigate("SelectSwitch", null));
         }
     }
 }

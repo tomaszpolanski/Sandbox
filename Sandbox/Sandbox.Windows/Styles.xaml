@@ -4,7 +4,7 @@
     xmlns:local="using:Sandbox">
 
     <Style x:Key="BackButtonStyle" TargetType="Button" BasedOn="{StaticResource NavigationBackButtonNormalStyle}"/>
-    <Style x:Key="RootStackPanelStyle" TargetType="StackPanel">
+    <Style x:Key="RootPanelStyle" TargetType="Panel">
         <Setter Property="Margin" Value="60,20"/>
     </Style>
 </ResourceDictionary>

@@ -15,6 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SelectionCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\LatestWinsPage.xaml.cs">
       <DependentUpon>LatestWinsPage.xaml</DependentUpon>
     </Compile>
@@ -29,6 +30,9 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\SandBoxPage.xaml.cs">
       <DependentUpon>SandBoxPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\SelectSwitchPage.xaml.cs">
+      <DependentUpon>SelectSwitchPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\SubscriptionChangePage.xaml.cs">
       <DependentUpon>SubscriptionChangePage.xaml</DependentUpon>
@@ -52,6 +56,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Views\SandBoxPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\SelectSwitchPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
