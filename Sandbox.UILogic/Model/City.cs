@@ -4,9 +4,9 @@ namespace Sandbox.UILogic.Model
 {
     public class City : Place
     {
-        private uint _population;
+        private long _population;
 
-        public uint Population
+        public long Population
         {
             get { return _population; }
             set
@@ -19,6 +19,6 @@ namespace Sandbox.UILogic.Model
             }
         }
 
-        public event EventHandler<uint> PopulationChanged = delegate { };
+        public event EventHandler<long> PopulationChanged = delegate { };
     }
 }

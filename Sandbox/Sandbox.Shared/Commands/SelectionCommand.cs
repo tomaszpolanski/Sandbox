@@ -35,7 +35,7 @@ namespace Sandbox.Commands
             if (obj is ListViewBase)
             {
                 var list = obj as ListViewBase;
-                list.SelectionChanged += (sender, e) => ExecuteCommand(obj, e.AddedItems);
+                list.SelectionChanged += (sender, e) => ExecuteCommand(obj, list.SelectedItems);
             }
 
         }

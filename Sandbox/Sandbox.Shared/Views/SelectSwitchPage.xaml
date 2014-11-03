@@ -26,8 +26,8 @@
 
         </StackPanel>
         <Grid Style="{StaticResource RootPanelStyle}"
-                    HorizontalAlignment="Left"
-                    Grid.Row="1">
+              HorizontalAlignment="Left"
+              Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
@@ -38,6 +38,7 @@
                        FontSize="30"/>
             <GridView ItemsSource="{Binding CitiesList}" 
                       commands:SelectionCommand.Command="{Binding ItemSelectedCommand}"
+                      SelectionMode="Multiple"
                       Grid.Column="1">
                 <GridView.ItemTemplate>
                     <DataTemplate>
