@@ -32,15 +32,21 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
             <TextBlock Text="{Binding Population.Value}"
                        Width="300"
                        FontSize="30"/>
-            <GridView ItemsSource="{Binding CitiesList}" 
+            <ListView x:Name="SliderList"
+                      ItemsSource="{Binding CitiesList}" 
                       commands:SelectionCommand.Command="{Binding ItemSelectedCommand}"
                       SelectionMode="Multiple"
+                      Margin="0,0,30,0"
                       Grid.Column="1">
-                <GridView.ItemTemplate>
+                <ListView.ItemTemplate>
                     <DataTemplate>
 
                         <Slider x:Name="PopulationSlider"
@@ -48,13 +54,34 @@
                                 Header="{Binding ElementName=PopulationSlider, Path=Value}"
                                 Minimum="0"
                                 Maximum="200000"
-                                Value="{Binding Population, Mode=TwoWay}">
+                                Margin="0,20,0,0"
+                                Value="{Binding Population, Mode=TwoWay}"/>
 
-                            </Slider>
+
                     </DataTemplate>
-                </GridView.ItemTemplate>
-            </GridView>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="DefaultLayout"/>
+                <VisualState x:Name="MinimalLayout">
+                <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SliderList"
+                                                   Storyboard.TargetProperty="(Grid.Column)">
+                        <DiscreteObjectKeyFrame KeyTime="0"
+                                    Value="0" />
+                    </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SliderList"
+                                                   Storyboard.TargetProperty="(Grid.Row)">
+                            <DiscreteObjectKeyFrame KeyTime="0"
+                                    Value="1" />
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+            </VisualState>
+            </VisualStateGroup>
+
+        </VisualStateManager.VisualStateGroups>
 
 
     </Grid>
