@@ -25,9 +25,11 @@
                          Margin="0,10"/>
                 <TextBox Text="{Binding PlaceAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          Margin="0,10"/>
-                <TextBox Text="{Binding PlaceIsFavorite, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    <CheckBox Content="Is favorite"
+                          IsChecked="{Binding PlaceIsFavorite, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                          IsThreeState="False"
                          Margin="0,10"/>
-            </StackPanel>
+                </StackPanel>
             <TextBlock Text="{Binding ReactiveDisplayText.Value}"
                        FontSize="30"
                        TextWrapping="WrapWholeWords"/>

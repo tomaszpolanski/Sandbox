@@ -36,10 +36,10 @@ namespace Sandbox.UILogic.ViewModels
             set { _place.Address = value; }
         }
 
-        public string PlaceIsFavorite
+        public bool PlaceIsFavorite
         {
-            get { return _place.IsFavorite ? "1" : "0"; }
-            set { _place.IsFavorite = value == "1"; }
+            get { return _place.IsFavorite; }
+            set { _place.IsFavorite = value; }
         }
 
         #endregion
