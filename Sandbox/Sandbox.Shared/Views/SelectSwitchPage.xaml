@@ -13,7 +13,7 @@
     mc:Ignorable="d">
 
     <Grid>
-        <controls:PageContainer GoBackCommand="{Binding GoBackCommand}" 
+        <controls:PageContainer GoBackCommand="{Binding ElementName=pageRoot, Path=GoBackCommand}" 
                             Title="Select Switch">
         <controls:PageContainer.Body>
             <Grid>
@@ -36,7 +36,7 @@
                           Grid.Column="1"
                           Grid.Row="0">
                     <ListView.ItemTemplate>
-                            <DataTemplate >
+                            <DataTemplate>
                                 <Slider x:Name="PopulationSlider"
                                 Header="{Binding ElementName=PopulationSlider, Path=Value}"
                                 HorizontalAlignment="Stretch"
