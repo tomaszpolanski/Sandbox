@@ -16,7 +16,7 @@ namespace Sandbox.UILogic.ViewModels
 
         public SelectSwitchPageViewModel()
         {
-            CitiesList = Enumerable.Range(0, 5)
+            CitiesList = Enumerable.Range(0, 7)
                                    .Select(number => new City { Population = (uint)number * 1000})
                                    .ToList();
 
