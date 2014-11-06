@@ -6,56 +6,46 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="using:Microsoft.Practices.Prism.StoreApps"
     xmlns:prismmvvm="using:Microsoft.Practices.Prism.Mvvm"
+    xmlns:controls="using:ShareLink.Controls"
     prismmvvm:ViewModelLocator.AutoWireViewModel="true"
     x:Name="pageRoot"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal"
-                    Margin="0,80,0,0">
-            <Button Style="{StaticResource BackButtonStyle}"
-                    Margin="60,0,20,0"
-                    Command="{Binding GoBackCommand, ElementName=pageRoot}"/>
-            <TextBlock Text="Subscription change"
-                       Style="{StaticResource SandboxTitleStyleTextStyle}" />
+    <controls:PageContainer GoBackCommand="{Binding ElementName=pageRoot, Path=GoBackCommand}" 
+                            Title="Subscription change">
+        <controls:PageContainer.Body>
 
-        </StackPanel>
-        <StackPanel Style="{StaticResource RootPanelStyle}"
-                    Grid.Row="1">
-            <Grid >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <StackPanel>
-                    <TextBlock Text="{Binding CurrentName}"
+            <StackPanel>
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <TextBlock Text="{Binding CurrentName}"
                                FontSize="30"/>
-                    <TextBlock Text="{Binding CurrentAddress}"
+                        <TextBlock Text="{Binding CurrentAddress}"
                                FontSize="30"/>
-                    <TextBlock Text="{Binding CurrentFavorite}"
+                        <TextBlock Text="{Binding CurrentFavorite}"
                                FontSize="30"/>
 
-                </StackPanel>
+                    </StackPanel>
 
-                <StackPanel Grid.Column="1">
-                    <TextBlock Text="{Binding CurrentReactiveName.Value}"
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Text="{Binding CurrentReactiveName.Value}"
                                FontSize="30"/>
-                    <TextBlock Text="{Binding CurrentReactiveAddress.Value}"
+                        <TextBlock Text="{Binding CurrentReactiveAddress.Value}"
                                FontSize="30"/>
-                    <TextBlock Text="{Binding CurrentReactiveFavorite.Value}"
+                        <TextBlock Text="{Binding CurrentReactiveFavorite.Value}"
                                FontSize="30"/>
-                </StackPanel>
+                    </StackPanel>
 
-            </Grid>
+                </Grid>
 
-            <Button Content="Next"
+                <Button Content="Next"
                     Command="{Binding NextCommand}"/>
-        </StackPanel>
-        
+            </StackPanel>
 
-    </Grid>
+        </controls:PageContainer.Body>
+    </controls:PageContainer>
 </prism:VisualStateAwarePage>

@@ -1,13 +1,5 @@
-﻿using System.Reactive.Subjects;
-using System.Windows.Input;
-using Microsoft.Practices.Prism.Commands;
-using Microsoft.Practices.Prism.Mvvm;
-using System.Threading.Tasks;
-using System.Threading;
+﻿using Microsoft.Practices.Prism.Mvvm;
 using Utilities.Reactive;
-using System.Reactive.Linq;
-using System.Diagnostics;
-using System;
 
 namespace Sandbox.UILogic.ViewModels
 {
