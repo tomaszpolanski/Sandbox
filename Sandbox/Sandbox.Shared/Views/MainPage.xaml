@@ -6,47 +6,35 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="using:Microsoft.Practices.Prism.StoreApps"
     xmlns:prismmvvm="using:Microsoft.Practices.Prism.Mvvm"
+    xmlns:controls="using:ShareLink.Controls"
     prismmvvm:ViewModelLocator.AutoWireViewModel="true"
     x:Name="pageRoot"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal"
-                    Margin="0,80,0,0">
-            <Button Style="{StaticResource BackButtonStyle}"
-                    Margin="60,0,20,0"
-                    Command="{Binding GoBackCommand, ElementName=pageRoot}"/>
-            <TextBlock Text="Sandbox"
-                       Style="{StaticResource SandboxTitleStyleTextStyle}" />
-
-        </StackPanel>
-        <StackPanel Style="{StaticResource RootPanelStyle}"
-                    Width="300"
-                    HorizontalAlignment="Left"
-                    Grid.Row="1">
-            <Button Content="Reactive properties"
+    <controls:PageContainer GoBackCommand="{Binding ElementName=pageRoot, Path=GoBackCommand}" 
+                            Title="Select Switch">
+        <controls:PageContainer.Body>
+            <StackPanel MaxWidth="450"
+                        HorizontalAlignment="Left">
+                <Button Content="Reactive properties"
                     Command="{Binding ShowReactivePropertiesCommand}"
                     HorizontalAlignment="Stretch"/>
-            <Button Content="Subscription change"
+                <Button Content="Subscription change"
                     Command="{Binding SubscriptionChangeCommand}"
                     HorizontalAlignment="Stretch"/>
-            <Button Content="Property update"
+                <Button Content="Property update"
                     Command="{Binding PropertyUpdateCommand}"
                     HorizontalAlignment="Stretch"/>
-            <Button Content="Latest wins"
+                <Button Content="Latest wins"
                     Command="{Binding LatestWinsCommand}"
                     HorizontalAlignment="Stretch"/>
-            <Button Content="Select Switch"
+                <Button Content="Select Switch"
                     Command="{Binding SelectSwitchCommand}"
                     HorizontalAlignment="Stretch"/>
-            <Button Content="Sandbox"
+                <Button Content="Sandbox"
                     Command="{Binding SandboxCommand}"
                     HorizontalAlignment="Stretch"/>
-        </StackPanel>
-
-    </Grid>
+            </StackPanel>
+        </controls:PageContainer.Body>
+    </controls:PageContainer>
 </prism:VisualStateAwarePage>
