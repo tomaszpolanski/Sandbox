@@ -17,6 +17,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Commands\SelectionCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PageContainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\SelectionConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\LatestWinsPage.xaml.cs">
       <DependentUpon>LatestWinsPage.xaml</DependentUpon>
     </Compile>

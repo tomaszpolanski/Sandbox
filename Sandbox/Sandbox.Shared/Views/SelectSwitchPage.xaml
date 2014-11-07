@@ -8,9 +8,14 @@
     xmlns:mvvm="using:Microsoft.Practices.Prism.Mvvm"
     xmlns:commands="using:Sandbox.Commands"
     xmlns:controls="using:ShareLink.Controls"
+    xmlns:converters="using:Sandbox.Converters"
     mvvm:ViewModelLocator.AutoWireViewModel="true"
     x:Name="pageRoot"
     mc:Ignorable="d">
+    
+    <Page.Resources>
+        <converters:SelectionConverter x:Key="SelectionConverter"/>
+    </Page.Resources>
 
     <Grid>
         <controls:PageContainer GoBackCommand="{Binding ElementName=pageRoot, Path=GoBackCommand}" 
@@ -26,13 +31,17 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="{Binding Population.Value}"
-                       MinWidth="300"
+                    <StackPanel>
+                        <TextBlock Text="{Binding Population.Value}"
                        FontSize="30"/>
+                    <ToggleButton IsChecked="{Binding IsMultipleSelection.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  Content="Is multiselectable"/>
+                    </StackPanel>
                 <ListView x:Name="SliderList"
+                
                           ItemsSource="{Binding CitiesList}" 
                           commands:SelectionCommand.Command="{Binding ItemSelectedCommand}"
-                          SelectionMode="Multiple"
+                          SelectionMode="{Binding IsMultipleSelection.Value, Converter={StaticResource SelectionConverter}}"
                           Grid.Column="1"
                           Grid.Row="0">
                     <ListView.ItemTemplate>

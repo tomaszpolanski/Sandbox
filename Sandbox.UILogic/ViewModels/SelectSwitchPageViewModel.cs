@@ -12,7 +12,8 @@ namespace Sandbox.UILogic.ViewModels
     {
         public IList<City> CitiesList { get; private set; }
         public ReadonlyReactiveProperty<string> Population { get; private set; }
-        public ReactiveCommand<IList<object>> ItemSelectedCommand { get; private set;} 
+        public ReactiveCommand<IList<object>> ItemSelectedCommand { get; private set;}
+        public ReactiveProperty<bool> IsMultipleSelection { get; private set; }
 
         public SelectSwitchPageViewModel()
         {
@@ -21,7 +22,25 @@ namespace Sandbox.UILogic.ViewModels
                                    .ToList();
 
             ItemSelectedCommand = new ReactiveCommand<IList<object>>();
-            Population = ItemSelectedCommand.Select(selectedItems => selectedItems.OfType<City>()
+            IsMultipleSelection = new ReactiveProperty<bool>(false);
+
+            Population = IsMultipleSelection.Select(isMultipleSelection => isMultipleSelection ?
+                                                     DefineMultipleSliderPopulationObservable(ItemSelectedCommand) :
+                                                     DefineSingleSliderPopulationObservable(ItemSelectedCommand))
+                                                     .Switch()
+                                                     .ToReadonlyReactiveProperty();
+
+        }
+
+        public void Dispose()
+        {
+            ItemSelectedCommand.Dispose();
+            Population.Dispose();
+        }
+
+        private static IObservable<string> DefineSingleSliderPopulationObservable(IObservable<IList<object>> itemsSelectedObservable)
+        {
+            return itemsSelectedObservable.Select(selectedItems => selectedItems.OfType<City>()
                                                                                   .FirstOrDefault())
                                             .Select(city => city != null ? Observable.FromEventPattern<long>(h => city.PopulationChanged += h,
                                                                                                              h => city.PopulationChanged -= h)
@@ -30,10 +49,12 @@ namespace Sandbox.UILogic.ViewModels
                                                                          : Observable.Return<long>(0))
                                             .Switch()
                                             .StartWith(0)
-                                            .Select(population => population.ToString())
-                                            .ToReadonlyReactiveProperty();
+                                            .Select(population => population.ToString());
+        }
 
-            Population = ItemSelectedCommand.Select(selectedItems => selectedItems.OfType<City>()
+        private static IObservable<string> DefineMultipleSliderPopulationObservable(IObservable<IList<object>> itemsSelectedObservable)
+        {
+            return itemsSelectedObservable.Select(selectedItems => selectedItems.OfType<City>()
                                                                                   .ToList())
                                             .Select(selectedItems => selectedItems.Any() ? selectedItems.ToObservable()
                                                                                                         .SelectMany(city => Observable.FromEventPattern<long>(h => city.PopulationChanged += h,
@@ -44,15 +65,7 @@ namespace Sandbox.UILogic.ViewModels
                                                                                          : Observable.Return<long>(0))
                                             .Switch()
                                             .StartWith(0)
-                                            .Select(population => population.ToString())
-                                            .ToReadonlyReactiveProperty();
-
-        }
-
-        public void Dispose()
-        {
-            ItemSelectedCommand.Dispose();
-            Population.Dispose();
+                                            .Select(population => population.ToString());
         }
     }
 }
