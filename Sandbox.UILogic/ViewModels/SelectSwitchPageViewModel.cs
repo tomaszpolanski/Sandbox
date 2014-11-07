@@ -27,8 +27,8 @@ namespace Sandbox.UILogic.ViewModels
             Population = IsMultipleSelection.Select(isMultipleSelection => isMultipleSelection ?
                                                      DefineMultipleSliderPopulationObservable(ItemSelectedCommand) :
                                                      DefineSingleSliderPopulationObservable(ItemSelectedCommand))
-                                                     .Switch()
-                                                     .ToReadonlyReactiveProperty();
+                                            .Switch()
+                                            .ToReadonlyReactiveProperty();
 
         }
 
@@ -36,36 +36,37 @@ namespace Sandbox.UILogic.ViewModels
         {
             ItemSelectedCommand.Dispose();
             Population.Dispose();
+            IsMultipleSelection.Dispose();
         }
 
         private static IObservable<string> DefineSingleSliderPopulationObservable(IObservable<IList<object>> itemsSelectedObservable)
         {
             return itemsSelectedObservable.Select(selectedItems => selectedItems.OfType<City>()
-                                                                                  .FirstOrDefault())
-                                            .Select(city => city != null ? Observable.FromEventPattern<long>(h => city.PopulationChanged += h,
-                                                                                                             h => city.PopulationChanged -= h)
-                                                                                     .Select(args => args.EventArgs)
-                                                                                     .StartWith(city.Population)
-                                                                         : Observable.Return<long>(0))
-                                            .Switch()
-                                            .StartWith(0)
-                                            .Select(population => population.ToString());
+                                                                                .FirstOrDefault())
+                                          .Select(city => city != null ? Observable.FromEventPattern<long>(h => city.PopulationChanged += h,
+                                                                                                           h => city.PopulationChanged -= h)
+                                                                                   .Select(args => args.EventArgs)
+                                                                                   .StartWith(city.Population)
+                                                                       : Observable.Return<long>(0))
+                                          .Switch()
+                                          .StartWith(0)
+                                          .Select(population => population.ToString());
         }
 
         private static IObservable<string> DefineMultipleSliderPopulationObservable(IObservable<IList<object>> itemsSelectedObservable)
         {
             return itemsSelectedObservable.Select(selectedItems => selectedItems.OfType<City>()
-                                                                                  .ToList())
-                                            .Select(selectedItems => selectedItems.Any() ? selectedItems.ToObservable()
-                                                                                                        .SelectMany(city => Observable.FromEventPattern<long>(h => city.PopulationChanged += h,
-                                                                                                                                                              h => city.PopulationChanged -= h)
-                                                                                                                                      .Select(args => city)
-                                                                                                                                      .StartWith(city))
-                                                                                                        .BucketSum(city => city.Population)
-                                                                                         : Observable.Return<long>(0))
-                                            .Switch()
-                                            .StartWith(0)
-                                            .Select(population => population.ToString());
+                                                                                .ToList())
+                                          .Select(selectedItems => selectedItems.Any() ? selectedItems.ToObservable()
+                                                                                                      .SelectMany(city => Observable.FromEventPattern<long>(h => city.PopulationChanged += h,
+                                                                                                                                                            h => city.PopulationChanged -= h)
+                                                                                                                                    .Select(args => city)
+                                                                                                                                    .StartWith(city))
+                                                                                                      .BucketSum(city => city.Population)
+                                                                                       : Observable.Return<long>(0))
+                                          .Switch()
+                                          .StartWith(0)
+                                          .Select(population => population.ToString());
         }
     }
 }
