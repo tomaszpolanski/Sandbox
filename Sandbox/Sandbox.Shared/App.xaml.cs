@@ -9,14 +9,10 @@ using Microsoft.Practices.Unity;
 
 namespace Sandbox
 {
-    /// <summary>
-    /// Provides application-specific behavior to supplement the default Application class.
-    /// </summary>
+
     public sealed partial class App : MvvmAppBase
     {
         private readonly IUnityContainer _container = new UnityContainer();
-
-        public IEventAggregator EventAggregator { get; private set; }
 
         public App()
         {
@@ -32,11 +28,8 @@ namespace Sandbox
 
         protected override Task OnInitializeAsync(IActivatedEventArgs args)
         {
-            EventAggregator = new EventAggregator();
-
             _container.RegisterInstance(NavigationService);
             _container.RegisterInstance(SessionStateService);
-            _container.RegisterInstance(EventAggregator);
 
             ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(viewType =>
             {
