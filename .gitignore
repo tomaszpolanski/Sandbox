@@ -13,3 +13,10 @@
 /_NCrunch_Sandbox/*.cache
 /*.suo
 /Sandbox.UILogic/*.USER
+/Sandbox.Console/*.ncrunchproject
+/Sandbox.Console/bin/Debug
+/Sandbox.Console/obj/Debug
+/Sandbox.Linq/obj/Debug
+/Sandbox.Linq/bin/Debug
+/Sandbox.Linq/*.ncrunchproject
+/Sandbox.sln.ide
